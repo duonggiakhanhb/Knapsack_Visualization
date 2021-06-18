@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <script src="js/jquery/jquery-3.6.0-slim.js"></script>
+    <script src="js/jquery/jq-ui.js"></script>
+    <script src="js/jquery/jq.js"></script>
+    <script src="js/Trace.js"></script>
+
+    <!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
+
+    <title>Dynamic Programming For Knapsack Problem</title>
+</head>
+<body>
+<img class="title" src="image/DYNAMIC%20PROGRAMMING%20FOR%20KNAPSACK.svg">
+<div class="input-1">
+    <div class="left-1">
+        <div class="N">Number</div>
+        <input class="input -N">
+        <div class="W">Capacity</div>
+        <input class="input -W">
+    </div>
+    <div class="right-1">
+        <div class="btn generate-input">Create table</div>
+        <div class="btn generate">Get Value</div>
+    </div>
+</div>
+<div class="inputT value">
+    <div class="text value">Value</div>
+    <div id="val" class="rtg value"></div>
+</div>
+<div class="inputT weight">
+    <div class="text weight">Weight</div>
+    <div id="wei" class="rtg weight"></div>
+</div>
+<div class="tbl result"></div>
+<div class="control bar">
+    <div class="play" aria-checked="false">
+        <span>Play</span>
+    </div>
+    <img src="image/Polygon01.svg" class="back">
+    <div class="status">
+        <input type="range" class="input-status" value="1" min="0" max="100">
+    </div>
+    <span class="status-value">1/80</span>
+    <img src="image/Polygon01.svg" class="forward">
+</div>
+<div class="speed bar">
+    <span class="speed-value">Delay: 200</span>
+    <input class="speed-slider" type="range" min="1" max="1000" value="200">
+</div>
+<div id="matrix" class="tbl matrix"></div>
+<div class="output result">
+    <span class="result-text">Result: ???</span>
+    <small>&copy; Copyright 2021 by Adam Nguyen</small>
+</div>
+</body>
+<script src="js/script.js"></script>
+<script src="js/jquery/Slider.js"></script>
+</html>
