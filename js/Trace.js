@@ -5,7 +5,7 @@ class Tracer {
         this.DP = new Array(N+1);
         this.interval = null;
         this.display = [];
-        this.pivot = 0;
+        this.pivot = 1;
         this.hmtlTrace = [];
         this.ms = 500;
         this.selected = [];
@@ -92,12 +92,16 @@ class Tracer {
         if(this.displayCurrent(this.hmtlTrace[this.pivot])) return;
 
         this.interval = setInterval(() => {
-            if(this.pivot >= this.display.length) return;
+            if(this.pivot >= this.display.length) {
+                play = true;
+                $('.play span').text('Play');
+                return;
+            }
             this.runDP(this.display[this.pivot]);
             var max = $('.input-status').prop('max');
             $('.input-status').val(this.pivot);
             var width = this.pivot / max * 100;
-            $('.status-value').html( (this.pivot+1) + '/' + (max *1 +1) );
+            $('.status-value').html( (this.pivot) + '/' + (max *1) );
             $('.input-status').css('background', `linear-gradient(270deg, #666666 ${100-width}%, #FFED50 0%)`);
             this.pivot++;
         }, this.ms);

@@ -1,8 +1,8 @@
 
 var MAXTIME = Number.MAX_VALUE;
-var val = [1, 4, 5, 7];
-var wt = [1, 3, 4, 5];
-var W = 7;
+var val = [3, 7, 2, 9];
+var wt = [2, 2, 4, 5];
+var W = 10;
 var N = 4;
 var tracer = new Tracer();
 var play = true;
@@ -85,7 +85,7 @@ function createValue(){
         var input = document.createElement('input');
         input.id = 'v-i-'+ i;
         input.type = "text";
-        input.value = val[i];
+        input.value = val[i] ?? 0;
         cell.appendChild(input);
         cell.setAttribute("id", 'v-c-'+i);
         cell.setAttribute("class", 'cell');
@@ -133,7 +133,7 @@ function createWeight(){
         var input = document.createElement('input');
         input.type = "text";
         input.id = 'w-i-'+ i;
-        input.value = wt[i];
+        input.value = wt[i] ?? 0;
         cell.appendChild(input);
         cell.setAttribute("id", 'w-c-'+i);
         cell.setAttribute("class", 'cell');
@@ -170,6 +170,12 @@ function createTableSelected(){
     var cell = document.createElement('td');
     cell.appendChild(text);
     row.appendChild(cell);
+    delete cell;
+    delete text;
+    var text = document.createTextNode('Value');
+    var cell = document.createElement('td');
+    cell.appendChild(text);
+    row.appendChild(cell);
     tblBody.appendChild(row);
 
     for (var i=0; i<tracer.selected.length; i++){
@@ -182,6 +188,10 @@ function createTableSelected(){
         delete cell;
         var cell = document.createElement('td');
         cell.innerHTML = wt[tracer.selected[i]-1];
+        row.appendChild(cell);
+        delete cell;
+        var cell = document.createElement('td');
+        cell.innerHTML = val[tracer.selected[i]-1];
         row.appendChild(cell);
         tblBody.appendChild(row);
     }
@@ -201,6 +211,8 @@ function getValue(){
 }
 
 function knapsack(i, j){
+    tracer.delay();
+    tracer.delay();
     var temp = i;
     for (; i < N + 1; i++) {
         tracer.DP[i] = new Array(W + 1);
@@ -284,14 +296,16 @@ i = temp;
 
     createTableSelected();
     $('.input-status').prop('max', tracer.display.length-1);
-    $('.status-value').html(1 +'/'+ (tracer.display.length + 1));
+    $('.status-value').html(1 +'/'+ (tracer.display.length -1));
     $('.result-text').html('Result: '+ tracer.DP[N][W]);
     $('.input-status').val(0);
 }
 
 function clear(){
     $('.tbl.matrix').empty();
-
+    createValue();
+    createWeight();
+    getValue();
     $('#val').empty();
     $('#wei').empty();
 

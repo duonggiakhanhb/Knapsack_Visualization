@@ -3,7 +3,7 @@ $(document).on('input', '.input-status', function() {
 });
 
 $('.back').on( 'click', () => {
-    if(tracer.pivot==0) return;
+    if(tracer.pivot==1) return;
     changeStatus(-1);
 });
 
@@ -13,6 +13,8 @@ $('.forward').on('click', () => {
 });
 
 $('.btn.generate-input').click(() => {
+    N = parseInt($('.input.-N').val());
+    W = parseInt($('.input.-W').val());
     clear();
 });
 
@@ -50,10 +52,13 @@ function changeStatus(changed= 0){
     $('.input-status').val(val);
     var width = val / max * 100;
 
-    $('.status-value').html( (val+1) + '/' + (max *1 +1) );
+    $('.status-value').html( (val) + '/' + (max *1) );
     $('.input-status').css('background', `linear-gradient(270deg, #666666 ${100-width}%, #FFED50 0%)`);
     tracer.pivot = val;
     tracer.displayCurrent(tracer.hmtlTrace[tracer.pivot]);
+    play = true;
+    $('.play span').text('Play');
+
 }
 
 
