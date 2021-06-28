@@ -213,17 +213,15 @@ function getValue(){
 function knapsack(i, j){
     tracer.delay();
     tracer.delay();
-    var temp = i;
-    for (; i < N + 1; i++) {
+    for (var i = 0; i < N + 1; i++) {
         tracer.DP[i] = new Array(W + 1);
         for (; j < W + 1; j++) {
             tracer.DP[i][j] = 0;
         }
         j=0;
     }
-i = temp;
-    for ( ;i <= N; i++) {
-        for (; j <= W; j++) {
+    for ( var i = 0;i <= N; i++) {
+        for (var j = 0; j <= W; j++) {
             if (i === 0 || j === 0) {
                 /*
                 If we have no items or maximum weight we can take in collection is 0
@@ -280,9 +278,8 @@ i = temp;
                 // }
             }
         }
-        j=0;
     }
-    i=N; j=W;
+    var i=N; var j=W;
     while(tracer.DP[i][j] != 0){
         if(tracer.DP[i][j] != tracer.DP[i-1][j]){
             j-=wt[i-1];
